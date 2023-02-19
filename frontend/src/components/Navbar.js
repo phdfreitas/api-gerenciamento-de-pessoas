@@ -4,6 +4,7 @@ const Navbar = () => {
   return (
     <div>
         <nav>
+            <Link to={"/cadastrarPessoa"}>Cadastrar Pessoa</Link>
             <Link to={"/listaPessoas"}>Lista de Pessoas</Link>
         </nav>
     </div>
