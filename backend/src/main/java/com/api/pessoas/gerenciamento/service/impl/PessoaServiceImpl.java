@@ -38,6 +38,7 @@ public class PessoaServiceImpl implements PessoaService {
     @Override
     public Pessoa atualizaDadosPessoa(Long id, Pessoa pessoa){
         Pessoa pessoaAtualizada = consultaPessoa(id);
+        
         pessoaAtualizada.setNome(pessoa.getNome());
         pessoaAtualizada.setDataDeNascimento(pessoa.getDataDeNascimento());
 
