@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useFetch } from "../hooks/useFecth"
 
+import { Link } from "react-router-dom"
 
 const AtualizarPessoa = () => {
 
@@ -14,7 +15,7 @@ const AtualizarPessoa = () => {
     <div>
         <p>{pessoa.nome}</p>
         <p>{pessoa.dataDeNascimento}</p>
-        <p></p>
+        <p><Link to={`/atualizarDados/${pessoa.id}`}>Atualizar dados</Link></p>
     </div>
   )
 }
