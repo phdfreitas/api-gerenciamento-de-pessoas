@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom"
 import { useFetch } from "../hooks/useFecth"
 
+import Table from 'react-bootstrap/Table';
+
 const url = 'http://localhost:8080/pessoas/listarTodas'
 
 const ListaPessoas = () => {
@@ -9,19 +11,32 @@ const ListaPessoas = () => {
 
   return (
     <div>
-        <h1>Lista de Pessoas</h1>
-        <ul>
-            {pessoas.map((pessoa) => (
-                <li key={pessoa.id}> 
-                    <p>
-                        {pessoa.nome} - {pessoa.dataDeNascimento}
-                        <span>
+
+        <h1>Pessoas cadastradas no sistema</h1>
+
+        <Table striped>
+            <thead>
+                <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Data de Nascimento</th>
+                <th>Mais informações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {pessoas.map((pessoa) => (
+                    <tr key={pessoa.id}>
+                        <td>{pessoa.id}</td>
+                        <td>{pessoa.nome}</td>
+                        <td>{pessoa.dataDeNascimento}</td>
+                        <td>
                             <Link to={`/consultar/${pessoa.id}`}>Consultar dados</Link>
-                        </span>
-                    </p>
-                </li>
-            ))}
-        </ul>
+                        </td>
+                    </tr>
+                    
+                ))}
+            </tbody>
+        </Table>
     </div>
   )
 }
