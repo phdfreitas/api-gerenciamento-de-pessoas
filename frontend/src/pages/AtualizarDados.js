@@ -1,9 +1,10 @@
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
 import { useState } from "react"
 
 import { useParams } from "react-router-dom"
 import { useEffect } from "react"
-
-import { redirect } from "react-router-dom"
 
 const AtualizarDados = () => {
 
@@ -49,31 +50,36 @@ const AtualizarDados = () => {
 
   return (
     <div>
-        <form onSubmit={handleSubmit}>
-            <label>
-                    Nome:
-                    <input 
+        <h1 id='titulo-cadastro'>Atualizar dados</h1>
+
+        <div id="form-cadastro">
+            <Form onSubmit={handleSubmit}>
+                <Form.Group className="mb-3" controlId="formBasicNome">
+                    <Form.Label>Nome</Form.Label>
+                    <Form.Control 
                         type="text" 
-                        name="nome" 
-                        id="nome" 
-                        value={nome} 
+                        name="nome"
+                        value={nome}
                         onChange={(e) => setNome(e.target.value)}
-                    />
-                </label>
+                        placeholder="Insira seu nome" />
+                </Form.Group>
 
-                <label>
-                    Data de Nascimento:
-                    <input 
-                        type="text" 
-                        name="nascimento" 
-                        id="nascimento" 
+                <Form.Group className="mb-3" controlId="formBasicDataDeNascimento">
+                    <Form.Label>Data de Nascimento</Form.Label>
+                    <Form.Control 
+                        type="text"
+                        name="dataDeNascimento"
                         value={dataDeNascimento} 
-                        onChange={(e) => setDataDeNascimento(e.target.value)}
+                        onChange={(e) => setDataDeNascimento(e.target.value)} 
+                        placeholder="dd/mm/yyyy"
                     />
-                </label>
-
-                <input type="submit" value="Atualizar" onClick={() => {return redirect("/listaPessoas")}}/>
-            </form>
+                </Form.Group>
+                
+                <Button id='btn-cadastro' size='lg' variant="success" type="submit">
+                    Atualizar dados
+                </Button>
+            </Form>
+        </div>
     </div>
   )
 }
