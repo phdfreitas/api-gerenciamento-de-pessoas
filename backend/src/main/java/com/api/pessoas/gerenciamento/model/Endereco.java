@@ -13,10 +13,13 @@ public class Endereco {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String logradouro;
     private String cep;
-    private String numero;
+    private String logradouro;
+    private String complemento;
+    private String bairro;
+    private String uf;
     private String cidade;
+    private String numero;
 
     @ManyToOne
     @JoinColumn(name = "pessoa_id")
@@ -28,12 +31,15 @@ public class Endereco {
 
     public Endereco() {}
 
-    public Endereco(Long id, String logradouro, String cep, String numero, String cidade, Pessoa pessoa, TipoEndereco tipoEndereco) {
+    public Endereco(Long id, String cep, String logradouro, String complemento, String bairro, String uf, String cidade, String numero, Pessoa pessoa, TipoEndereco tipoEndereco) {
         this.id = id;
-        this.logradouro = logradouro;
         this.cep = cep;
-        this.numero = numero;
+        this.logradouro = logradouro;
+        this.complemento = complemento;
+        this.bairro = bairro;
+        this.uf = uf;
         this.cidade = cidade;
+        this.numero = numero;
         this.pessoa = pessoa;
         this.tipoEndereco = tipoEndereco;
     }
@@ -46,6 +52,14 @@ public class Endereco {
         this.id = id;
     }
 
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
     public String getLogradouro() {
         return logradouro;
     }
@@ -54,12 +68,28 @@ public class Endereco {
         this.logradouro = logradouro;
     }
 
-    public String getCep() {
-        return cep;
+    public String getComplemento() {
+        return complemento;
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
     }
 
     public String getNumero() {
