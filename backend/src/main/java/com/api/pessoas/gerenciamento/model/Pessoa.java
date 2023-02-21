@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,24 +20,40 @@ public class Pessoa {
     private Long id;
     
     @NotNull
-    @Column(name = "nome_pessoa")
     private String nome;
+
+    @NotNull
+    private String sobrenome;
 
     @Column(name = "data_de_nascimento")
     @JsonFormat(pattern = "dd/MM/yyyy")
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataDeNascimento;
 
+    @NotNull
+    private String email;
+
+    @NotNull
+    private String senha;
+
     @OneToMany(mappedBy = "pessoa")
     @JsonManagedReference
     private List<Endereco> enderecos;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "tb_user_roles", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "role_id")
+    private List<String> roles = new ArrayList<>();
+
     public Pessoa() {}
 
-    public Pessoa(Long id, String nome, LocalDate dataDeNascimento) {
+    public Pessoa(Long id, String nome, String sobrenome, LocalDate dataDeNascimento, String email, String senha) {
         this.id = id;
         this.nome = nome;
+        this.sobrenome = sobrenome;
         this.dataDeNascimento = dataDeNascimento;
+        this.email = email;
+        this.senha = senha;
     }
 
     public Long getId() {
@@ -55,6 +72,14 @@ public class Pessoa {
         this.nome = nome;
     }
 
+    public String getSobrenome() {
+        return sobrenome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
+    }
+
     public LocalDate getDataDeNascimento() {
         return dataDeNascimento;
     }
@@ -63,11 +88,35 @@ public class Pessoa {
         this.dataDeNascimento = dataDeNascimento;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
     public List<Endereco> getEnderecos() {
         return enderecos;
     }
 
     public void setEnderecos(List<Endereco> enderecos) {
         this.enderecos = enderecos;
+    }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
 }
