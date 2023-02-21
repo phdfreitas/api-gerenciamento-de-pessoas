@@ -10,12 +10,12 @@ const ListaPessoas = () => {
     const {data: pessoas} = useFetch(url)
 
   return (
-    <div>
+    <div id="cadastro">
 
-        <h1>Pessoas cadastradas no sistema</h1>
+        <h1 className="titulos-centralizados">Pessoas cadastradas no sistema</h1>
 
         <Table striped>
-            <thead>
+            <thead className="titulos-centralizados">
                 <tr>
                 <th>#</th>
                 <th>Nome</th>
@@ -25,7 +25,7 @@ const ListaPessoas = () => {
                 <th>Mais informações</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody className="titulos-centralizados">
                 {pessoas.map((pessoa) => (
                     <tr key={pessoa.id}>
                         <td>{pessoa.id}</td>
@@ -34,11 +34,11 @@ const ListaPessoas = () => {
                         <td>{pessoa.email}</td>
                         <td>{pessoa.dataDeNascimento}</td>
                         <td>
-                            <Link to={`/consultar/${pessoa.id}`}>Consultar Endereços</Link>
-                            <Link to={`/adicionarNovoEndereco/${pessoa.id}`}>Adicionar endereço</Link>
+                            <Link to={`/atualizarDados/${pessoa.id}`} className="links-tabelas">Atualizar dados</Link>
+                            <Link to={`/consultar/${pessoa.id}`} className="links-tabelas">Consultar Endereços</Link>
+                            <Link to={`/adicionarNovoEndereco/${pessoa.id}`} className="links-tabelas">Adicionar endereço</Link>
                         </td>
                     </tr>
-                    
                 ))}
             </tbody>
         </Table>

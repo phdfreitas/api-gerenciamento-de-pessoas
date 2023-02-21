@@ -38,7 +38,7 @@ const CadastraPessoa = () => {
 
   return (
     <div id='cadastro'>
-        <h1 id='titulo-cadastro'>Cadastrar nova pessoa</h1>
+        <h1 className='titulos-centralizados'>Cadastrar nova pessoa</h1>
 
         <div id='form-cadastro'>
         <Form onSubmit={handleSubmit}>
@@ -90,7 +90,7 @@ const CadastraPessoa = () => {
                     name="senha"
                     value={senha}
                     onChange={(e) => setSenha(e.target.value)}
-                    placeholder="Insira sua senah" />
+                    placeholder="Insira sua senha" />
             </Form.Group>
             
             <Button id='btn-cadastro' size='lg' variant="success" type="submit">

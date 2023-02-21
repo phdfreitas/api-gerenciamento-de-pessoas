@@ -2,8 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import { useState } from "react"
-import { json, useParams } from 'react-router-dom';
-import { useFetch } from '../hooks/useFecth';
+import { useParams } from 'react-router-dom';
 
 const CadastraEndereco = () => {
 
@@ -33,7 +32,7 @@ const CadastraEndereco = () => {
             if(jsonResponse.cep){
                 setCep(jsonResponse.cep)
                 setLogradouro(jsonResponse.logradouro)
-                setComplemento(jsonResponse.complemento == "s/n" ? "" : jsonResponse.complemento)
+                setComplemento(jsonResponse.complemento === "s/n" ? "" : jsonResponse.complemento)
                 setBairro(jsonResponse.bairro)
                 setUf(jsonResponse.uf)
                 setCidade(jsonResponse.localidade)
@@ -65,7 +64,7 @@ const CadastraEndereco = () => {
             body: JSON.stringify(endereco)
         })
 
-        //window.location.href = "http://localhost:3000/listaPessoas"
+        window.location.href = `http://localhost:3000/consultar/${id}`
     }
 
   return (
