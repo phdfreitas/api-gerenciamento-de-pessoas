@@ -2,7 +2,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import { useState } from "react"
-import { useParams } from 'react-router-dom';
+import { json, useParams } from 'react-router-dom';
+import { useFetch } from '../hooks/useFecth';
 
 const CadastraEndereco = () => {
 
@@ -18,7 +19,29 @@ const CadastraEndereco = () => {
     const [cidade, setCidade] = useState("")
     const [numero, setNumero] = useState("")
     const [tipoEndereco, setTipoEndereco] = useState("")
+    
+    const handleCep = (e) => {
         
+        const urlCep = `https://viacep.com.br/ws/${cep}/json/`
+
+        async function fetchData(){
+
+            const response = await fetch(urlCep)
+
+            const jsonResponse = await response.json()
+            
+            if(jsonResponse.cep){
+                setCep(jsonResponse.cep)
+                setLogradouro(jsonResponse.logradouro)
+                setComplemento(jsonResponse.complemento == "s/n" ? "" : jsonResponse.complemento)
+                setBairro(jsonResponse.bairro)
+                setUf(jsonResponse.uf)
+                setCidade(jsonResponse.localidade)
+            }
+        }
+        fetchData()
+    }
+
     const handleSubmit = async (e) => {
 
         e.preventDefault()
@@ -57,6 +80,7 @@ const CadastraEndereco = () => {
                         type="text" 
                         name="cep"
                         value={cep}
+                        onBlur={handleCep}
                         onChange={(e) => setCep(e.target.value)}
                         placeholder="Insira seu cep" />
                 </Form.Group>
