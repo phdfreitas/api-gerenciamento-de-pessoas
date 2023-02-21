@@ -9,6 +9,7 @@ import CadastraPessoa from './pages/CadastraPessoa';
 import ConsultarPessoa from './pages/ConsultarPessoa';
 import AtualizarDados from './pages/AtualizarDados';
 import Home from './pages/Home';
+import CadastraEndereco from './pages/CadastraEndereco';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='/cadastrarPessoa' element={<CadastraPessoa/>} />
           <Route path='/consultar/:id' element={<ConsultarPessoa/>} />
           <Route path='/atualizarDados/:id' element={<AtualizarDados/>} />
+          <Route path='/adicionarNovoEndereco/:id' element={<CadastraEndereco/>} />
         </Routes>
       </BrowserRouter>
 
