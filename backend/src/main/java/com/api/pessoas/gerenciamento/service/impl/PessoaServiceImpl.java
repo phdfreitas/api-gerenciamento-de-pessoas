@@ -7,7 +7,6 @@ import com.api.pessoas.gerenciamento.repository.EnderecoRepository;
 import com.api.pessoas.gerenciamento.repository.PessoaRepository;
 import com.api.pessoas.gerenciamento.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,9 +22,6 @@ public class PessoaServiceImpl implements PessoaService {
     
     @Override
     public Pessoa salvaPessoa(Pessoa pessoa){
-        
-        pessoa.setSenha(passwordEncoder().encode(pessoa.getSenha()));
-        pessoa.getRoles().add("USER");
         return pessoaRepository.save(pessoa);
     }
 
@@ -67,10 +63,6 @@ public class PessoaServiceImpl implements PessoaService {
     @Override
     public List<Endereco> listaEnderecosPessoa(Long idPessoa){
         return consultaPessoa(idPessoa).getEnderecos();
-    }
-
-    private BCryptPasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
     }
 
 }

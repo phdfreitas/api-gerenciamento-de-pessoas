@@ -3,11 +3,16 @@ package com.api.pessoas.gerenciamento.controller;
 import com.api.pessoas.gerenciamento.model.Endereco;
 import com.api.pessoas.gerenciamento.model.Pessoa;
 import com.api.pessoas.gerenciamento.service.impl.PessoaServiceImpl;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Tag(name = "Pessoas end point", description = "Gerenciamento de Pessoas")
 @RestController
 @RequestMapping("/pessoas")
 @CrossOrigin("http://localhost:3000")
@@ -16,6 +21,7 @@ public class PessoaController {
     @Autowired
     private PessoaServiceImpl pessoaService;
 
+    @Operation(summary = "Cadastrar nova pessoa")
     @PostMapping("/cadastrarNova")
     public Pessoa salvaPessoa(@RequestBody Pessoa pessoa){
         return pessoaService.salvaPessoa(pessoa);
