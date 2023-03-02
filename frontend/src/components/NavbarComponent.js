@@ -11,6 +11,7 @@ const NavbarComponent = () => {
           <Nav className="me-auto">
             <Nav.Link href="/cadastrarPessoa">Cadastrar Pessoa</Nav.Link>
             <Nav.Link href="/listaPessoas">Lista de Pessoas</Nav.Link>
+            <Nav.Link href="/login">Entrar</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
