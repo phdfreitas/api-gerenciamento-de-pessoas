@@ -23,7 +23,7 @@ function App() {
           <Route path='/' element={<Home/> } />
           <Route path='/listaPessoas' element={<ListaPessoas/>} />
           <Route path='/cadastrarPessoa' element={<CadastraPessoa/>} />
-          <Route path='/login' element={<Login/>} />
+          <Route exact={true} path='/login' element={<Login/>} />
           <Route path='/consultar/:id' element={<ConsultarPessoa/>} />
           <Route path='/atualizarDados/:id' element={<AtualizarDados/>} />
           <Route path='/adicionarNovoEndereco/:id' element={<CadastraEndereco/>} />

@@ -2,28 +2,22 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import { useState } from "react"
-
-const url = 'http://localhost:8080/login'
+import AuthenticationService from '../service/AuthenticationService';
 
 const Login = () => {
 
-    const [email, setEmail] = useState("pedro@gmail.com")
-    const [senha, setSenha] = useState("pedro")
+    const [email, setEmail] = useState("")
+    const [senha, setSenha] = useState("")
 
     const handleSubmit = async (e) => {
 
         e.preventDefault()
-        
-        await fetch(url, {
-            method: "POST",
-            headers: {
-                authorization: "Basic " + window.btoa("pedro" + ":" + senha)
-              } 
-        })
-        
-        
 
-        console.log(email, senha)
+        AuthenticationService.executeJwtAuthenticationService(email, senha)
+        .then((response) => {
+            AuthenticationService.registerSuccessfulLoginForJwt(email, response.data)
+            window.location.href = '/listaPessoas'
+        })
     }
 
   return (
