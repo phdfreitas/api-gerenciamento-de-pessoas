@@ -36,9 +36,12 @@ public class JwtConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         
         http
+            .cors()
+            .and()
             .csrf().disable()
             .authorizeRequests()
-            .antMatchers(HttpMethod.POST, "/login").permitAll()
+            .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+            .antMatchers(HttpMethod.POST, "/pessoas/login").permitAll()
             .anyRequest().authenticated()
             .and()
             .addFilter(new JwtAuthenticationFilter(authenticationManager(http.getSharedObject(AuthenticationConfiguration.class))))
