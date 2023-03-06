@@ -1,6 +1,42 @@
+/*Barra de Navegação*/
+#barraNavegacao{
+  background-color: paleturquoise;
+  border-bottom: 1px solid black;
+  height: 90px;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+}
+
+#barraNavegacao #barraNavegacao-Brand{
+  font-size: 2.1em;
+  color: black;
+  font-weight: 600;
+}
+
+#barraNavegacao #barraNavegacao-Itens{
+  margin-left: 750px;
+  font-size: 1.1em;
+}
+
+#barraNavegacao-Itens-Item1, #barraNavegacao-Itens-Item2,
+#barraNavegacao-Itens-Item3, #barraNavegacao-Itens-Item4{
+  font-weight: 700;
+}
+
+#barraNavegacao-Itens-Item1:hover, #barraNavegacao-Itens-Item2:hover,
+#barraNavegacao-Itens-Item3:hover, #barraNavegacao-Itens-Item4:hover{
+  color: rgb(255, 255, 255);
+}
+
+#barraNavegacao #barraNavegacao-Brand:hover{
+  color: rgb(255, 255, 255);
+}
+
+
 /*Estilo Home*/
 #home{
-  background-color: blanchedalmond;
+  background-color: paleturquoise;
 }
 
 #home-main{
@@ -58,7 +94,6 @@
 
 #extras{
   clear: both;
-  border-top: 2px solid black;
   padding: 20px;
 }
 
