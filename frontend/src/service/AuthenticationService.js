@@ -12,6 +12,9 @@ class AuthenticationService {
             email,
             senha
         })
+        .catch(() => {
+            return {status: 403}
+        })
     }
 
     registerSuccessfulLoginForJwt(email, token) {

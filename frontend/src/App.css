@@ -94,3 +94,7 @@
 .links-tabelas:hover{
   color: rgb(45, 38, 38);
 }
+
+#loginErrorMessage{
+  color: red;
+}

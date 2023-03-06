@@ -11,6 +11,7 @@ import AtualizarDados from './pages/AtualizarDados';
 import Home from './pages/Home';
 import CadastraEndereco from './pages/CadastraEndereco';
 import Login from './pages/Login';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
@@ -21,7 +22,11 @@ function App() {
         
         <Routes>
           <Route path='/' element={<Home/> } />
-          <Route path='/listaPessoas' element={<ListaPessoas/>} />
+          <Route path='/listaPessoas' element={
+            <PrivateRoute>
+              <ListaPessoas/>
+            </PrivateRoute>
+          } />
           <Route path='/cadastrarPessoa' element={<CadastraPessoa/>} />
           <Route exact={true} path='/login' element={<Login/>} />
           <Route path='/consultar/:id' element={<ConsultarPessoa/>} />

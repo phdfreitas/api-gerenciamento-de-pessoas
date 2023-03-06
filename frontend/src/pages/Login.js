@@ -1,5 +1,8 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert';
+
+import {VscError} from 'react-icons/vsc'
 
 import { useState } from "react"
 import AuthenticationService from '../service/AuthenticationService';
@@ -8,6 +11,7 @@ const Login = () => {
 
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
+    const [error, setError] = useState("")
 
     const handleSubmit = async (e) => {
 
@@ -15,6 +19,11 @@ const Login = () => {
 
         AuthenticationService.executeJwtAuthenticationService(email, senha)
         .then((response) => {
+            console.log(response.status)
+            if(response.status === 403){
+                setError('Usuário ou senha inválidos')
+                return
+            }
             AuthenticationService.registerSuccessfulLoginForJwt(email, response.data)
             window.location.href = '/listaPessoas'
         })
@@ -25,6 +34,13 @@ const Login = () => {
         <h1 className='titulos-centralizados'>Login</h1>
 
         <div id='form-cadastro'>
+            {error !== "" && 
+                <Alert key="danger" variant="danger" >
+                    <VscError/> 
+                    {error}
+                </Alert>
+            }
+
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicNome">
                     <Form.Label>Email</Form.Label>
