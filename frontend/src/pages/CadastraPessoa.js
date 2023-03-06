@@ -33,7 +33,7 @@ const CadastraPessoa = () => {
             body: JSON.stringify(pessoa) 
         })
 
-        window.location.href = "http://localhost:3000/listaPessoas"
+        window.location.href = "http://localhost:3000/login"
     }
 
   return (
@@ -80,7 +80,7 @@ const CadastraPessoa = () => {
                     name="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Insira seu nome" />
+                    placeholder="Insira seu email" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicSenha">

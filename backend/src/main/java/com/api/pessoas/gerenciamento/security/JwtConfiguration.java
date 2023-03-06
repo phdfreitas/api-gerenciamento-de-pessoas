@@ -42,6 +42,7 @@ public class JwtConfiguration {
             .authorizeRequests()
             .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
             .antMatchers(HttpMethod.POST, "/pessoas/login").permitAll()
+            .antMatchers(HttpMethod.POST, "/pessoas/cadastrarNova").permitAll()
             .anyRequest().authenticated()
             .and()
             .addFilter(new JwtAuthenticationFilter(authenticationManager(http.getSharedObject(AuthenticationConfiguration.class))))
@@ -56,6 +57,13 @@ public class JwtConfiguration {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 
         CorsConfiguration corsConfiguration = new CorsConfiguration().applyPermitDefaultValues();
+
+        corsConfiguration.setAllowedHeaders(java.util.Arrays.asList("*"));
+        corsConfiguration.setAllowedOrigins(java.util.Arrays.asList("*"));
+        corsConfiguration.setAllowedMethods(java.util.Arrays.asList("*"));
+        corsConfiguration.setAllowedOriginPatterns(java.util.Arrays.asList("*"));
+        corsConfiguration.setMaxAge(3600L);
+
         source.registerCorsConfiguration("/**", corsConfiguration);
     
         return source;

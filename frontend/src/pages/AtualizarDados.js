@@ -5,6 +5,7 @@ import { useState } from "react"
 
 import { useParams } from "react-router-dom"
 import { useEffect } from "react"
+import authHeader from '../service/AuthenticationHeader';
 
 const AtualizarDados = () => {
 
@@ -20,7 +21,10 @@ const AtualizarDados = () => {
     useEffect(() => {
         async function fetchData(){
 
-            const response = await fetch(url)
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: authHeader()
+            })
 
             const jsonResponse = await response.json()
             
@@ -47,12 +51,10 @@ const AtualizarDados = () => {
 
         await fetch(`http://localhost:8080/pessoas/atualizarDados/${id}`, {
             method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-              },
+            headers: authHeader(),
             body: JSON.stringify(pessoa) 
         })
-
+        
         window.location.href = "http://localhost:3000/listaPessoas"
     }
 
