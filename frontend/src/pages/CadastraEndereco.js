@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 
 import { useState } from "react"
 import { useParams } from 'react-router-dom';
+import authHeader from '../service/AuthenticationHeader';
 
 const CadastraEndereco = () => {
 
@@ -58,9 +59,7 @@ const CadastraEndereco = () => {
 
         await fetch(url, {
             method: "POST", 
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: authHeader(),
             body: JSON.stringify(endereco)
         })
 

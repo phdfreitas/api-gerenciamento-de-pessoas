@@ -47,6 +47,7 @@
   width: 900px;
   margin: -10px;
   float: left;
+  height: 500px;
 }
 
 #primeiraDivPrincipal h1, h3{
@@ -95,6 +96,8 @@
 #extras{
   clear: both;
   padding: 20px;
+  background-color: #fff;
+  border-top: 1px solid black;
 }
 
 #feedback-home{
@@ -121,6 +124,36 @@
   margin-top: 20px;
 }
 
+/*Sessão Comentários*/
+
+#comentariosUsuarios{
+  width: 450px;
+  padding: 15px;
+  margin-top: 50px;
+  margin-bottom: 25px;
+  margin-left: 30px;
+  border: 1px solid #e2dfdf;
+  float: left;
+}
+
+.comentarioNomeUsuario{
+  font-style: italic;
+  font-size: 1.4em;
+}
+
+.paragrafoComentario{
+  margin-top: 10px;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.2em;
+}
+
+.dataHome{
+  display: block;
+  font-weight: 400;
+  font-size: 1.1em;
+}
+
 /*Outras*/
 .links-tabelas{
   margin: 3px;
@@ -132,4 +165,11 @@
 
 #loginErrorMessage{
   color: red;
+}
+
+footer{
+  background-color: #fff;
+  padding: 12px;
+  text-align: center;
+  font-size: 1.1em;
 }
