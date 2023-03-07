@@ -2,6 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import { useState } from "react"
+import Footer from '../components/Footer';
 
 const url = 'http://localhost:8080/pessoas/cadastrarNova'
 
@@ -92,12 +93,15 @@ const CadastraPessoa = () => {
                     onChange={(e) => setSenha(e.target.value)}
                     placeholder="Insira sua senha" />
             </Form.Group>
-            
+            <div id='btn-cadastro-div'>
             <Button id='btn-cadastro' size='lg' variant="success" type="submit">
                 Cadastrar
             </Button>
+            </div>
         </Form>
         </div>
+
+        <Footer/>
     </div>
   )
 }

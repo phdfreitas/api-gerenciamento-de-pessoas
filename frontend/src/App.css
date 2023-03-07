@@ -140,24 +140,39 @@
   margin-top: 10px;
 }
 
+#cadastro{
+  width: 400px;
+  margin: 0 auto;
+}
+
 /*Formulários de Cadastro*/
 .titulos-centralizados{
   text-align: center;
+  margin-top: 25px;
+  font-size: 2em;
 }
 
 #form-cadastro{
-  width: 600px;
-  text-align: center;
+  width: 400px;
+  font-weight: 300;
   margin: 0 auto;
-  padding: 15px;
-  margin-top: 50px;
+  padding: 20px;
+  margin-top: 40px;
   margin-bottom: 25px;
+  border: 1px solid black;
+}
+
+#btn-cadastro-div{
+  text-align: center;
 }
 
 #btn-cadastro{
-  padding: 10px 35px;
-  background-color: rgb(5, 180, 102);
-  margin-top: 20px;
+  background-color: rgb(5, 139, 180);
+  border-radius: 20px;
+  margin: 8px;
+  width: 80%;
+  font-size: 1.3em;
+  font-weight: 600;
 }
 
 /*Sessão Comentários*/

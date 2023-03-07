@@ -63,7 +63,7 @@ const Login = () => {
                 </Form.Group>
                 
                 <Button id='btn-cadastro' size='lg' variant="success" type="submit">
-                    Cadastrar
+                    Entrar
                 </Button>
             </Form>
         </div>
