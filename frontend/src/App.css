@@ -1,5 +1,5 @@
 /*Barra de Navegação*/
-#barraNavegacao{
+#barraNavegacao1{
   background-color: paleturquoise;
   border-bottom: 1px solid black;
   height: 90px;
@@ -8,28 +8,64 @@
   z-index: 1;
 }
 
-#barraNavegacao #barraNavegacao-Brand{
+#barraNavegacao1 #barraNavegacao1-Brand{
   font-size: 2.1em;
   color: black;
   font-weight: 600;
 }
 
-#barraNavegacao #barraNavegacao-Itens{
+#barraNavegacao1 #barraNavegacao1-Itens{
   margin-left: 750px;
   font-size: 1.1em;
 }
 
-#barraNavegacao-Itens-Item1, #barraNavegacao-Itens-Item2,
-#barraNavegacao-Itens-Item3, #barraNavegacao-Itens-Item4{
+#barraNavegacao1-Itens-Item1, #barraNavegacao1-Itens-Item2,
+#barraNavegacao1-Itens-Item3, #barraNavegacao1-Itens-Item4{
   font-weight: 700;
 }
 
-#barraNavegacao-Itens-Item1:hover, #barraNavegacao-Itens-Item2:hover,
-#barraNavegacao-Itens-Item3:hover, #barraNavegacao-Itens-Item4:hover{
+#barraNavegacao1-Itens-Item1:hover, #barraNavegacao1-Itens-Item2:hover,
+#barraNavegacao1-Itens-Item3:hover, #barraNavegacao1-Itens-Item4:hover{
   color: rgb(255, 255, 255);
 }
 
-#barraNavegacao #barraNavegacao-Brand:hover{
+#barraNavegacao1 #barraNavegacao1-Brand:hover{
+  color: rgb(255, 255, 255);
+}
+
+/*Barra Navegação 2*/
+#barraNavegacao2{
+  background-color: rgb(22, 29, 29);
+  border-bottom: 1px solid black;
+  height: 90px;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+}
+
+#barraNavegacao2 #barraNavegacao2-Brand{
+  font-size: 2.1em;
+  color: #fff;
+  font-weight: 600;
+}
+
+#barraNavegacao2 #barraNavegacao2-Itens{
+  margin-left: 750px;
+  font-size: 1.1em;
+}
+
+#barraNavegacao2-Itens-Item1, #barraNavegacao2-Itens-Item2,
+#barraNavegacao2-Itens-Item3, #barraNavegacao2-Itens-Item4{
+  font-weight: 700;
+  color: #fff;
+}
+
+#barraNavegacao2-Itens-Item1:hover, #barraNavegacao2-Itens-Item2:hover,
+#barraNavegacao2-Itens-Item3:hover, #barraNavegacao2-Itens-Item4:hover{
+  color: rgb(255, 255, 255);
+}
+
+#barraNavegacao2 #barraNavegacao2-Brand:hover{
   color: rgb(255, 255, 255);
 }
 

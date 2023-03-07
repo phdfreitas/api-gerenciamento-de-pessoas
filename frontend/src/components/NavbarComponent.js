@@ -6,22 +6,35 @@ import Navbar from 'react-bootstrap/Navbar';
 import AuthenticationService from '../service/AuthenticationService';
 
 const NavbarComponent = () => {
+  
+  const path = window.location.pathname
+
+  console.log(path)
+
+  const style1 = ["barraNavegacao1", "barraNavegacao1-Brand", "barraNavegacao1-Itens", 
+                "barraNavegacao1-Itens-Item1", "barraNavegacao1-Itens-Item2", 
+                "barraNavegacao1-Itens-Item3", "barraNavegacao1-Itens-Item4"]
+  
+  const style2 = ["barraNavegacao2", "barraNavegacao2-Brand", "barraNavegacao2-Itens", 
+                  "barraNavegacao2-Itens-Item1", "barraNavegacao2-Itens-Item2",
+                  "barraNavegacao2-Itens-Item3", "barraNavegacao2-Itens-Item4"]
+
   return (
     <div>
-      <Navbar id='barraNavegacao'>
+      <Navbar id={path === "/" ? style1[0] : style2[0]}>
         <Container>
-          <Navbar.Brand href="/" id='barraNavegacao-Brand'>Gerenciamento</Navbar.Brand>
-          <Nav className="me-auto" id='barraNavegacao-Itens'>
+          <Navbar.Brand href="/" id={path === "/" ? style1[1] : style2[1]}>Gerenciamento</Navbar.Brand>
+          <Nav className="me-auto" id={path === "/" ? style1[2] : style2[2]}>
             {!AuthenticationService.isUserLoggedIn() &&
               <>
-                <Nav.Link id='barraNavegacao-Itens-Item1' href="/cadastrarPessoa">Cadastrar Pessoa</Nav.Link>
-                <Nav.Link id='barraNavegacao-Itens-Item2' href="/login">Entrar</Nav.Link>
+                <Nav.Link id={path === "/" ? style1[3] : style2[3]} href="/cadastrarPessoa">Cadastrar Pessoa</Nav.Link>
+                <Nav.Link id={path === "/" ? style1[4] : style2[4]} href="/login">Entrar</Nav.Link>
               </>
             }
             {AuthenticationService.isUserLoggedIn() &&
             <>
-              <Nav.Link id='barraNavegacao-Itens-Item3' href="/listaPessoas">Lista de Pessoas</Nav.Link>
-              <Nav.Link id='barraNavegacao-Itens-Item4' href="/" onClick={AuthenticationService.logout}>Sair</Nav.Link>
+              <Nav.Link id={path === "/" ? style1[5] : style2[5]} href="/listaPessoas">Lista de Pessoas</Nav.Link>
+              <Nav.Link id={path === "/" ? style1[6] : style2[6]} href="/" onClick={AuthenticationService.logout}>Sair</Nav.Link>
             </>
             }
           </Nav>
