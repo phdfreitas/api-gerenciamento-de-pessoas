@@ -8,7 +8,11 @@ import AuthenticationService from '../service/AuthenticationService';
 const NavbarComponent = () => {
   
   const path = window.location.pathname
+  const user = AuthenticationService.isUserLoggedIn()
+  const currentUser = AuthenticationService.getLoggedInUserName()
 
+
+  
   console.log(path)
 
   const style1 = ["barraNavegacao1", "barraNavegacao1-Brand", "barraNavegacao1-Itens", 
@@ -25,15 +29,21 @@ const NavbarComponent = () => {
         <Container>
           <Navbar.Brand href="/" id={path === "/" ? style1[1] : style2[1]}>Gerenciamento</Navbar.Brand>
           <Nav className="me-auto" id={path === "/" ? style1[2] : style2[2]}>
-            {!AuthenticationService.isUserLoggedIn() &&
+            {!user &&
               <>
                 <Nav.Link id={path === "/" ? style1[3] : style2[3]} href="/cadastrarPessoa">Cadastrar Pessoa</Nav.Link>
                 <Nav.Link id={path === "/" ? style1[4] : style2[4]} href="/login">Entrar</Nav.Link>
               </>
             }
-            {AuthenticationService.isUserLoggedIn() &&
+            {user && currentUser.role === 'ROLE_ADMIN' &&
             <>
               <Nav.Link id={path === "/" ? style1[5] : style2[5]} href="/listaPessoas">Lista de Pessoas</Nav.Link>
+              <Nav.Link id={path === "/" ? style1[6] : style2[6]} href="/" onClick={AuthenticationService.logout}>Sair</Nav.Link>
+            </>
+            }
+            {user && currentUser.role === 'ROLE_USER' &&
+            <>
+              <Nav.Link id={path === "/" ? style1[5] : style2[5]} href="/meusEnderecos">Meus Enderecos</Nav.Link>
               <Nav.Link id={path === "/" ? style1[6] : style2[6]} href="/" onClick={AuthenticationService.logout}>Sair</Nav.Link>
             </>
             }

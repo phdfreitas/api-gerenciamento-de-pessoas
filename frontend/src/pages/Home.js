@@ -29,7 +29,7 @@ const Home = () => {
               Harum et quas officia neque nihil cupiditate at provident enim a quibusdam! 
             </h3>
 
-            <Button href={'/cadastrarPessoa'} variant='warning' id='btn-main-redirect'>
+            <Button href={'/cadastrarPessoa'} id='btn-main-redirect'>
               Criar uma conta
             </Button>
           </div>

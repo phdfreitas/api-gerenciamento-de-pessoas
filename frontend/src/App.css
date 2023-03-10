@@ -1,6 +1,6 @@
 /*Barra de Navegação*/
 #barraNavegacao1{
-  background-color: paleturquoise;
+  background-color: #f8efbd;
   border-bottom: 1px solid black;
   height: 90px;
   width: 100%;
@@ -68,7 +68,7 @@
 
 /*Estilo Home*/
 #home{
-  background-color: paleturquoise;
+  background-color: #f8efbd;
 }
 
 #home-main{
@@ -106,6 +106,7 @@
   margin-bottom: 35px;
   border-radius: 20px;
   padding: 10px 20px;
+  background-color: #8ab3cf;
 }
 
 #link-main-redirect {

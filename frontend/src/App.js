@@ -12,6 +12,7 @@ import Home from './pages/Home';
 import CadastraEndereco from './pages/CadastraEndereco';
 import Login from './pages/Login';
 import PrivateRoute from './components/PrivateRoute';
+import ListaEndereco from './pages/user/ListaEndereco';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path='/consultar/:id' element={<ConsultarPessoa/>} />
           <Route path='/atualizarDados/:id' element={<AtualizarDados/>} />
           <Route path='/adicionarNovoEndereco/:id' element={<CadastraEndereco/>} />
+          <Route path='/meusEnderecos' element={<ListaEndereco/>} />
         </Routes>
       </BrowserRouter>
 

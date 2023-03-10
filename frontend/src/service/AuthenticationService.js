@@ -18,7 +18,7 @@ class AuthenticationService {
     }
 
     registerSuccessfulLoginForJwt(email, token) {
-        localStorage.setItem(USER_NAME_SESSION_ATTRIBUTE_NAME, token)
+        localStorage.setItem(USER_NAME_SESSION_ATTRIBUTE_NAME, JSON.stringify(token))
         this.setupAxiosInterceptors(this.createJWTToken(token))
     }
 
@@ -40,7 +40,7 @@ class AuthenticationService {
     getLoggedInUserName() {
         let user = localStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME)
         if (user === null) return ''
-        return user
+        return JSON.parse(atob(user.split('.')[1]));
     }
 
     setupAxiosInterceptors(token) {

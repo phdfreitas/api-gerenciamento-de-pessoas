@@ -25,7 +25,7 @@ const Login = () => {
                 return
             }
             AuthenticationService.registerSuccessfulLoginForJwt(email, response.data)
-            window.location.href = '/listaPessoas'
+            window.location.href = "/listaPessoas"
         })
     }
 
