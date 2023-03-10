@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PessoaServiceImpl implements PessoaService {
@@ -48,6 +49,11 @@ public class PessoaServiceImpl implements PessoaService {
 
         return pessoaRepository.save(pessoaAtualizada);
     }
+    
+    @Override
+    public Optional<Pessoa> findByEmail(String email) {
+        return pessoaRepository.findByEmail(email);
+    }
 
     @Override
     public Pessoa adicionaNovoEndereco(Endereco endereco, Long idPessoa){
@@ -64,13 +70,7 @@ public class PessoaServiceImpl implements PessoaService {
         return pessoaRepository.save(pessoa);
     }
 
-    @Override
-    public List<Endereco> listaEnderecosPessoa(Long idPessoa){
-        return consultaPessoa(idPessoa).getEnderecos();
-    }
-
     private BCryptPasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
-
 }

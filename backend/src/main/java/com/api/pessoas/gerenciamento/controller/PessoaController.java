@@ -44,6 +44,11 @@ public class PessoaController {
         return pessoaService.consultaPessoa(id);
     }
 
+    @GetMapping("/consultarPorEmail/{email}")
+    public Pessoa consultaPessoaPorEmail(@PathVariable String email){
+        return pessoaService.findByEmail(email).get();
+    }
+
     @PutMapping("atualizarDados/{id}")
     public Pessoa atualizaDadosPessoa(@PathVariable Long id, @RequestBody Pessoa pessoa){
         return pessoaService.atualizaDadosPessoa(id, pessoa);
@@ -52,10 +57,5 @@ public class PessoaController {
     @PostMapping("adicionarNovoEndereco/{id}")
     public Pessoa adicionaNovoEndereco(@PathVariable Long id, @RequestBody Endereco endereco){
         return pessoaService.adicionaNovoEndereco(endereco, id);
-    }
-
-    @GetMapping("enderecos/{id}")
-    public List<Endereco> enderecosPessoa(@PathVariable Long id){
-        return pessoaService.listaEnderecosPessoa(id);
     }
 }
