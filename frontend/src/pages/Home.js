@@ -3,6 +3,10 @@ import Button from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel';
 import Footer from '../components/Footer';
 
+import { BsRobot } from "react-icons/bs";
+import {FaUserCheck} from 'react-icons/fa'
+import {BsFillClockFill} from 'react-icons/bs'
+
 const Home = () => {
 
   const comentarios = 
@@ -29,8 +33,8 @@ const Home = () => {
               Harum et quas officia neque nihil cupiditate at provident enim a quibusdam! 
             </h3>
 
-            <Button href={'/cadastrarPessoa'} id='btn-main-redirect'>
-              Criar uma conta
+            <Button href={'/cadastrarPessoa'} variant="warning" id='btn-main-redirect'>
+              <span>Criar nova conta</span>
             </Button>
           </div>
 
@@ -97,6 +101,72 @@ const Home = () => {
               </Carousel.Item>    
             ))}
           </Carousel>
+        </div>
+        
+        <div id="recomendacao">
+
+          <h1>Por que usar nossa plataforma?</h1>
+          
+          <div id="recomendacao1">
+            <div className="icon-recomendacao">
+              <BsRobot/>
+            </div>
+
+            <h2 className='titulo-recomendacoes'>
+                Inteligência Artificial
+            </h2>
+              
+            <p className="paragrafo-recomendacoes">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+                Enim officiis eligendi inventore iste amet nihil mollitia, 
+                sint soluta ipsa nisi minima est, at quis expedita sit. 
+                Eum minima nisi dolores.
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+                Enim officiis eligendi inventore iste amet nihil mollitia, 
+                sint soluta ipsa nisi minima est, at quis expedita sit. 
+                Eum minima nisi dolores.
+            </p>
+          </div>
+
+          <div id="recomendacao2">
+            <div className="icon-recomendacao">
+              <BsFillClockFill/>
+            </div>
+
+            <h2 className='titulo-recomendacoes'>
+              Economize tempo
+            </h2>
+            <p className="paragrafo-recomendacoes">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+              Enim officiis eligendi inventore iste amet nihil mollitia, 
+              sint soluta ipsa nisi minima est, at quis expedita sit. 
+              Eum minima nisi dolores. 
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+              Enim officiis eligendi inventore iste amet nihil mollitia, 
+              sint soluta ipsa nisi minima est, at quis expedita sit. 
+              Eum minima nisi dolores.
+            </p>
+          </div>
+
+          <div id="recomendacao3">
+            <div className="icon-recomendacao">
+              <FaUserCheck/>
+            </div>
+
+            <h2 className='titulo-recomendacoes'>
+              Focado no usuário
+            </h2>
+            <p className="paragrafo-recomendacoes">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+              Enim officiis eligendi inventore iste amet nihil mollitia, 
+              sint soluta ipsa nisi minima est, at quis expedita sit. 
+              Eum minima nisi dolores.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+              Enim officiis eligendi inventore iste amet nihil mollitia, 
+              sint soluta ipsa nisi minima est, at quis expedita sit. 
+              Eum minima nisi dolores.
+            </p>
+          </div>
         </div>
 
         <Footer/>

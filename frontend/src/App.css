@@ -1,7 +1,17 @@
+/*Animacao*/
+@keyframes spin{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
 /*Barra de Navegação*/
 #barraNavegacao1{
-  background-color: #f8efbd;
-  border-bottom: 1px solid black;
+  background-color: #a4c0ff;
+  border-bottom: 2px solid black;
   height: 90px;
   width: 100%;
   top: 0;
@@ -68,7 +78,7 @@
 
 /*Estilo Home*/
 #home{
-  background-color: #f8efbd;
+  background-color: #a4c0ff;
 }
 
 #home-main{
@@ -106,7 +116,6 @@
   margin-bottom: 35px;
   border-radius: 20px;
   padding: 10px 20px;
-  background-color: #8ab3cf;
 }
 
 #link-main-redirect {
@@ -124,6 +133,7 @@
 
 #imagens{
   width: 490px;
+  animation: spin 30s linear infinite;
 }
 
 #extras{
@@ -190,7 +200,7 @@
 #comentariosUsuarios{
   width: 450px;
   padding: 15px;
-  margin-top: 50px;
+  margin-top: 40px;
   margin-bottom: 25px;
   margin-left: 30px;
   border: 1px solid #e2dfdf;
@@ -199,20 +209,52 @@
 
 .comentarioNomeUsuario{
   font-style: italic;
-  font-size: 1.4em;
+  font-size: 1.25em;
 }
 
 .paragrafoComentario{
   margin-top: 10px;
   font-style: italic;
   font-weight: 400;
-  font-size: 1.2em;
+  font-size: 1.18em;
 }
 
 .dataHome{
   display: block;
   font-weight: 400;
   font-size: 1.1em;
+}
+
+/*Recomendacoes*/
+#recomendacao h1{
+  text-align: center;
+  font-size: 2.5em;
+  margin-top: 40px;
+  color: #001875;
+}
+
+#recomendacao1, #recomendacao2, #recomendacao3{
+  padding: 15px;
+  margin-bottom: 25px;
+  margin-left: 30px;
+  float: left;
+  width: 450px;
+}
+
+.icon-recomendacao{
+  text-align: center;
+  font-size: 3em;
+}
+
+.titulo-recomendacoes{
+  color: #001875;
+  text-align: center;
+}
+
+.paragrafo-recomendacoes{
+  text-align: justify;
+  font-size: 1.1em;
+  color: #001875;
 }
 
 /*Lista Pessoas*/
@@ -243,4 +285,5 @@ footer{
   padding: 12px;
   text-align: center;
   font-size: 1.1em;
+  clear: both;
 }
