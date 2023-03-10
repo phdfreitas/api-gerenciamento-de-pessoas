@@ -49,6 +49,7 @@ const Login = () => {
                         name="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        autoFocus
                         placeholder="Insira seu email" />
                 </Form.Group>
 
@@ -62,9 +63,20 @@ const Login = () => {
                         placeholder="Insira sua senha" />
                 </Form.Group>
                 
-                <Button id='btn-cadastro' size='lg' variant="success" type="submit">
-                    Entrar
-                </Button>
+                <div id='links-extras-login'>
+                    <div>
+                        <a href="/cadastrarPessoa">Não possui cadastro? Clique aqui</a>
+                    </div>
+                    <div>
+                        <a href="/">Esqueceu a senha? </a>
+                    </div>
+                </div>
+
+                <div id='btn-cadastro-div'>
+                    <Button id='btn-cadastro' size='lg' variant="success" type="submit">
+                        Entrar
+                    </Button>
+                </div>
             </Form>
         </div>
     </div>

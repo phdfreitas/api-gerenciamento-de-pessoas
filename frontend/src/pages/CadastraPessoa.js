@@ -94,9 +94,9 @@ const CadastraPessoa = () => {
                     placeholder="Insira sua senha" />
             </Form.Group>
             <div id='btn-cadastro-div'>
-            <Button id='btn-cadastro' size='lg' variant="success" type="submit">
-                Cadastrar
-            </Button>
+                <Button id='btn-cadastro' size='lg' variant="success" type="submit">
+                    Cadastrar
+                </Button>
             </div>
         </Form>
         </div>

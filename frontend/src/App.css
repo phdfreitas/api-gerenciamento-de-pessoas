@@ -35,17 +35,13 @@
 
 /*Barra Navegação 2*/
 #barraNavegacao2{
-  background-color: rgb(22, 29, 29);
   border-bottom: 1px solid black;
-  height: 90px;
-  width: 100%;
-  top: 0;
-  z-index: 1;
+  height: 80px;
 }
 
 #barraNavegacao2 #barraNavegacao2-Brand{
   font-size: 2.1em;
-  color: #fff;
+  color: #000;
   font-weight: 600;
 }
 
@@ -57,16 +53,16 @@
 #barraNavegacao2-Itens-Item1, #barraNavegacao2-Itens-Item2,
 #barraNavegacao2-Itens-Item3, #barraNavegacao2-Itens-Item4{
   font-weight: 700;
-  color: #fff;
+  color: #000;
 }
 
 #barraNavegacao2-Itens-Item1:hover, #barraNavegacao2-Itens-Item2:hover,
 #barraNavegacao2-Itens-Item3:hover, #barraNavegacao2-Itens-Item4:hover{
-  color: rgb(255, 255, 255);
+  color: #0064fb;
 }
 
 #barraNavegacao2 #barraNavegacao2-Brand:hover{
-  color: rgb(255, 255, 255);
+  color: #0064fb;
 }
 
 
@@ -167,12 +163,25 @@
 }
 
 #btn-cadastro{
-  background-color: rgb(5, 139, 180);
+  background-color: #0064fb;
   border-radius: 20px;
   margin: 8px;
   width: 80%;
   font-size: 1.3em;
   font-weight: 600;
+}
+
+#links-extras-login{
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#links-extras-login a{
+  color: #0064fb;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 10px;
 }
 
 /*Sessão Comentários*/
@@ -203,6 +212,16 @@
   display: block;
   font-weight: 400;
   font-size: 1.1em;
+}
+
+/*Lista Pessoas*/
+#cabecalhoLista{
+  font-size: 1em;
+  text-align: center;
+}
+
+#corpoLista{
+  text-align: center;
 }
 
 /*Outras*/
