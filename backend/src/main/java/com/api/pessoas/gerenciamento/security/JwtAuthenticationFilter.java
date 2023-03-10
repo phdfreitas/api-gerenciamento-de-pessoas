@@ -42,7 +42,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             Pessoa pessoa = new ObjectMapper().readValue(request.getInputStream(), Pessoa.class);
 
             return authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(pessoa.getEmail(), pessoa.getSenha(), new ArrayList<>())
+                    new UsernamePasswordAuthenticationToken(pessoa.getEmail(), pessoa.getSenha())
             );
         } catch (IOException e) {
             throw new RuntimeException("Não foi possível autenticar o usuário ", e);
@@ -62,8 +62,11 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             String token = JWT.create()
                             .withSubject(userDetailsImpl.getUsername())
                             .withExpiresAt(new Date(System.currentTimeMillis() + TOKEN_EXPIRATION))
+                            .withClaim("role", userDetailsImpl.getAuthorities().toArray()[0].toString())
                             .sign(Algorithm.HMAC512(TOKEN_PASSWORD));
         
+            System.out.println("Token: " + JWT.decode(token).getSubject() + " - " + JWT.decode(token).getClaims().get("role"));
+
         // Registra o token no corpo da página
         response.getWriter().write(token);
         response.getWriter().flush();

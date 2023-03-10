@@ -13,13 +13,16 @@ public class UserDetailsImpl implements UserDetails{
 
     private final Optional<Pessoa> pessoa;
 
-    public UserDetailsImpl(Optional<Pessoa> pessoa) {
+    private final Collection<? extends GrantedAuthority> authorities;
+
+    public UserDetailsImpl(Optional<Pessoa> pessoa, Collection<? extends GrantedAuthority> authorities) {
         this.pessoa = pessoa;
+        this.authorities = authorities;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return new ArrayList<>();
+        return authorities;
     }
 
     @Override

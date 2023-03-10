@@ -1,7 +1,11 @@
 package com.api.pessoas.gerenciamento.service.impl;
 
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -29,7 +33,12 @@ public class UserDetailsServiceImpl implements UserDetailsService{
             throw new UsernameNotFoundException("Pessoa não encontrada" + email);
         }
 
-        return new UserDetailsImpl(pessoa);
+        Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
+        pessoa.get().getRoles().forEach(role -> {
+            authorities.add(new SimpleGrantedAuthority("ROLE_" + role));
+        });
+
+        return new UserDetailsImpl(pessoa, authorities);
     }
     
 }

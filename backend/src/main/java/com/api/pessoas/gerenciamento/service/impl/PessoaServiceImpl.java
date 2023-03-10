@@ -25,6 +25,7 @@ public class PessoaServiceImpl implements PessoaService {
     public Pessoa salvaPessoa(Pessoa pessoa){
 
         pessoa.setSenha(passwordEncoder().encode(pessoa.getSenha()));
+        pessoa.getRoles().add("USER");
         return pessoaRepository.save(pessoa);
     }
 

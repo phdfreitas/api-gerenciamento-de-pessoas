@@ -2,6 +2,8 @@ package com.api.pessoas.gerenciamento.security;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -10,11 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.Claim;
 
 public class JwtValidateFilter extends BasicAuthenticationFilter{
 
@@ -43,11 +48,16 @@ public class JwtValidateFilter extends BasicAuthenticationFilter{
     private UsernamePasswordAuthenticationToken getAuthenticationToken(String token){
         String username = JWT.require(Algorithm.HMAC512(JwtAuthenticationFilter.TOKEN_PASSWORD)).build().verify(token).getSubject();
 
+        List<GrantedAuthority> authorities = new ArrayList<>();
+
+        String role = JWT.require(Algorithm.HMAC512(JwtAuthenticationFilter.TOKEN_PASSWORD)).build().verify(token).getClaims().get("role").asString(); 
+        authorities.add(new SimpleGrantedAuthority(role));
+
         if(username == null) {
             return null;
         }
 
-        return new UsernamePasswordAuthenticationToken(username, null, new ArrayList<>());
+        return new UsernamePasswordAuthenticationToken(username, null, authorities);
     }
     
 }
