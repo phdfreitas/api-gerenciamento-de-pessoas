@@ -73,4 +73,9 @@ public class PessoaServiceImpl implements PessoaService {
     private BCryptPasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
+    @Override
+    public List<Endereco> listaEnderecos(Long idPessoa) {
+        return consultaPessoa(idPessoa).getEnderecos();
+    }
 }

@@ -67,4 +67,9 @@ public class PessoaController {
     public Pessoa adicionaNovoEndereco(@PathVariable Long id, @RequestBody Endereco endereco){
         return pessoaService.adicionaNovoEndereco(endereco, id);
     }
+
+    @GetMapping("enderecos/{id}")
+    public List<Endereco> enderecosPessoa(@PathVariable Long id){
+        return pessoaService.listaEnderecos(id);
+    }
 }

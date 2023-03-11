@@ -44,6 +44,7 @@ public class JwtConfiguration {
             .antMatchers(HttpMethod.POST, "/login").permitAll()
             .antMatchers(HttpMethod.POST, "/pessoas/cadastrarNova").permitAll()
             .antMatchers(HttpMethod.GET, "/pessoas/listarTodas").hasRole("ADMIN")
+            .antMatchers(HttpMethod.GET, "/pessoas/enderecos/{id}").hasRole("ADMIN")
             .anyRequest().authenticated()
             .and()
             .addFilter(new JwtAuthenticationFilter(authenticationManager(http.getSharedObject(AuthenticationConfiguration.class))))

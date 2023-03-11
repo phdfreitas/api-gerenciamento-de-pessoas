@@ -14,5 +14,5 @@ public interface PessoaService {
     Optional<Pessoa> findByEmail(String email);
     Pessoa atualizaDadosPessoa(Long id, Pessoa pessoa);
     Pessoa adicionaNovoEndereco(Endereco endereco, Long idPessoa);
-
+    List<Endereco> listaEnderecos(Long idPessoa);
 }
