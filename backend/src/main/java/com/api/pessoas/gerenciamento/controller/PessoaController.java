@@ -1,5 +1,6 @@
 package com.api.pessoas.gerenciamento.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +41,13 @@ public class PessoaController {
     }
 
     @GetMapping("/consultar/{id}")
-    public Pessoa consultaPessoa(@PathVariable Long id){
-        return pessoaService.consultaPessoa(id);
+    public Pessoa consultaPessoa(@PathVariable Long id, Principal principal){
+        String pessoaReal = pessoaService.consultaPessoa(id).getEmail();
+        if(principal.getName().equals(pessoaReal)){
+            return pessoaService.consultaPessoa(id);
+        }
+
+        return new Pessoa();
     }
 
     @GetMapping("/consultarPorEmail/{email}")
@@ -50,8 +56,11 @@ public class PessoaController {
     }
 
     @PutMapping("atualizarDados/{id}")
-    public Pessoa atualizaDadosPessoa(@PathVariable Long id, @RequestBody Pessoa pessoa){
-        return pessoaService.atualizaDadosPessoa(id, pessoa);
+    public Pessoa atualizaDadosPessoa(@PathVariable Long id, @RequestBody Pessoa pessoa, Principal principal){
+        if(principal.getName().equals(pessoa.getEmail())){
+            return pessoaService.atualizaDadosPessoa(id, pessoa);
+        }
+        return null;
     }
 
     @PostMapping("adicionarNovoEndereco/{id}")

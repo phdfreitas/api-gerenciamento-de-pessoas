@@ -6,12 +6,15 @@ import { useState } from "react"
 import { useParams } from "react-router-dom"
 import { useEffect } from "react"
 import authHeader from '../service/AuthenticationHeader';
+import AuthenticationService from '../service/AuthenticationService';
 
 const AtualizarDados = () => {
 
     const {id} = useParams()
     const url = `http://localhost:8080/pessoas/consultar/${id}`
     
+    const currentUser = AuthenticationService.getLoggedInUserName()
+
     const [nome, setNome] = useState("")
     const [sobrenome, setSobrenome] = useState("")
     const [email, setEmail] = useState("")
@@ -27,11 +30,18 @@ const AtualizarDados = () => {
             })
 
             const jsonResponse = await response.json()
+
+            if(jsonResponse.id !== null){
+                setNome(jsonResponse.nome)
+                setSobrenome(jsonResponse.sobrenome)
+                setDataDeNascimento(jsonResponse.dataDeNascimento)
+                setEmail(jsonResponse.email)
+            }else{
+                currentUser.role === "ROLE_USER" ?  
+                window.location.href = "/meusEnderecos" : 
+                window.location.href = "/listaPessoas"
+            }
             
-            setNome(jsonResponse.nome)
-            setSobrenome(jsonResponse.sobrenome)
-            setDataDeNascimento(jsonResponse.dataDeNascimento)
-            setEmail(jsonResponse.email)           
         }
 
         fetchData()
@@ -55,7 +65,15 @@ const AtualizarDados = () => {
             body: JSON.stringify(pessoa) 
         })
         
-        window.location.href = "http://localhost:3000/listaPessoas"
+        const currentUser = AuthenticationService.getLoggedInUserName()
+        
+        if(currentUser.role === "ROLE_ADMIN"){
+            window.location.href = "http://localhost:3000/listaPessoas"
+        }
+        else{
+            window.location.href = "http://localhost:3000/meusEnderecos"
+        }
+
     }
 
   return (

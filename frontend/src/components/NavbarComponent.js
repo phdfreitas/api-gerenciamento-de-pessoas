@@ -14,7 +14,7 @@ const NavbarComponent = () => {
   const user = AuthenticationService.isUserLoggedIn()
   const currentUser = AuthenticationService.getLoggedInUserName()
   
-  const url = `http://localhost:8080/pessoas/consultarPorEmail/${currentUser.sub}`
+  const url =  user ? `http://localhost:8080/pessoas/consultarPorEmail/${currentUser.sub}` : null
   let {data: pessoa} = useFetch(url)
 
   console.log(currentUser)
