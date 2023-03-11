@@ -5,19 +5,27 @@ import { Link } from "react-router-dom"
 
 import Table from 'react-bootstrap/Table';
 
+import AuthenticationService from '../service/AuthenticationService';
+
 const AtualizarPessoa = () => {
 
     const {id} = useParams()
 
-    const url = `http://localhost:8080/pessoas/consultar/${id}`
+    const currentUser = AuthenticationService.getLoggedInUserName()
+
+    const url = currentUser.role === 'ROLE_ADMIN' ? 
+    `http://localhost:8080/pessoas/enderecos/${id}` : 
+    `http://localhost:8080/pessoas/consultar/${currentUser.id}`
 
     const {data: pessoa} = useFetch(url)
-
+    console.log(pessoa)
   return (
     <div>
-      <h1 className="titulos-centralizados">Endereços de {pessoa.nome}</h1>
+      {(currentUser.role === 'ROLE_USER' || currentUser.id === {id}) &&
+        <>
+        <h1 className="titulos-centralizados">Endereços de {pessoa.nome}</h1>
 
-      <Table striped>
+        <Table striped>
           <thead>
               <tr>
               <th>#</th>
@@ -51,7 +59,46 @@ const AtualizarPessoa = () => {
               </tr>
             ))}
           </tbody>
-      </Table>
+        </Table>
+        </>
+      }
+
+      {currentUser.role === 'ROLE_ADMIN' &&
+        <>
+        <h1 className="titulos-centralizados">Endereços do usuário {id}</h1>
+
+        <Table striped>
+          <thead>
+              <tr>
+              <th>#</th>
+              <th>Cep</th>
+              <th>Logradouro</th>
+              <th>Complemento</th>
+              <th>Bairro</th>
+              <th>UF</th>
+              <th>Cidade</th>
+              <th>Número</th>
+              <th>Tipo do Endereço</th>
+              </tr>
+          </thead>
+          <tbody>
+            {pessoa && pessoa.map((endereco) => (
+              <tr key={endereco.id}>
+                <td>{endereco.id}</td>
+                <td>{endereco.cep}</td>
+                <td>{endereco.logradouro}</td>
+                <td>{endereco.complemento}</td>
+                <td>{endereco.bairro}</td>
+                <td>{endereco.uf}</td>
+                <td>{endereco.cidade}</td>
+                <td>{endereco.numero}</td>
+                <td>{endereco.tipoEndereco[0].toUpperCase() + endereco.tipoEndereco.substring(1).toLowerCase()}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+        </>
+      }
     </div>
   )
 }

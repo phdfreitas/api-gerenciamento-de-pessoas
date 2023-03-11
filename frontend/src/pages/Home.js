@@ -15,11 +15,7 @@ const Home = () => {
   
   const showDate = () => {
     const date = new Date().toLocaleDateString();
-    let time = new Date().toLocaleTimeString();
-
-    time = time.substring(0, 5);
-    
-    return date + ' ' + time;
+    return date
   }
   
 
@@ -51,8 +47,8 @@ const Home = () => {
           <div id='carroussel'>
             <Carousel variant='dark'>
               {comentarios.map((comentario) => (
-                <Carousel.Item className='carroussel-item'>
-                  <div key={comentario[0]} id='comentariosUsuarios'>
+                <Carousel.Item key={comentario} className='carroussel-item'>
+                  <div id='comentariosUsuarios'>
                     <div className='comentario'>
                       <h5 className='comentarioNomeUsuario'>{comentario[0]}</h5>
                       <div className='dataHome'>{showDate()}</div>
@@ -68,7 +64,7 @@ const Home = () => {
                     </div>
                   </div>
 
-                  <div key={comentario[1]} id='comentariosUsuarios'>
+                  <div id='comentariosUsuarios'>
                     <div className='comentario'>
                       <h5 className='comentarioNomeUsuario'>{comentario[1]}</h5>
                       <div className='dataHome'>{showDate()}</div>
@@ -84,7 +80,7 @@ const Home = () => {
                     </div>
                   </div>
 
-                  <div key={comentario[2]} id='comentariosUsuarios'>
+                  <div id='comentariosUsuarios'>
                     <div className='comentario'>
                       <h5 className='comentarioNomeUsuario'>{comentario[2]}</h5>
                       <div className='dataHome'>{showDate()}</div>

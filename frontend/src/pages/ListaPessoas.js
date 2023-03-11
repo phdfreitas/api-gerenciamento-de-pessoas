@@ -34,9 +34,7 @@ const ListaPessoas = () => {
                         <td>{pessoa.email}</td>
                         <td>{pessoa.dataDeNascimento}</td>
                         <td>
-                            <Link to={`/atualizarDados/${pessoa.id}`} className="links-tabelas">Atualizar dados</Link>
                             <Link to={`/consultar/${pessoa.id}`} className="links-tabelas">Consultar Endereços</Link>
-                            <Link to={`/adicionarNovoEndereco/${pessoa.id}`} className="links-tabelas">Adicionar endereço</Link>
                         </td>
                     </tr>
                 ))}
