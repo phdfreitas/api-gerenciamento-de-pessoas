@@ -8,7 +8,7 @@ const PrivateRoute = ({children}) => {
     
     if(user){
       const currentUser = AuthenticationService.getLoggedInUserName()
-      return currentUser.role === 'ROLE_ADMIN' ? children : <Navigate to={"/"}/>
+      return currentUser.role === 'ROLE_ADMIN' ? children : <Navigate to={"/meusEnderecos"}/>
     }
 
     return user ? children : <Navigate to={"/login"}/>

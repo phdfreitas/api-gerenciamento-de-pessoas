@@ -39,7 +39,7 @@ const CadastraPessoa = () => {
 
   return (
     <div id='cadastro'>
-        <h1 className='titulos-centralizados'>Cadastrar nova pessoa</h1>
+        <h1 className='titulos-centralizados'>Aproveite o máximo da nossa plataforma</h1>
 
         <div id='form-cadastro'>
         <Form onSubmit={handleSubmit}>
@@ -50,6 +50,7 @@ const CadastraPessoa = () => {
                     name="nome"
                     value={nome}
                     onChange={(e) => setNome(e.target.value)}
+                    autoFocus
                     placeholder="Insira seu nome" />
             </Form.Group>
 

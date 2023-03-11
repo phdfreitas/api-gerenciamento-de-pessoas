@@ -115,9 +115,11 @@ const AtualizarDados = () => {
                         placeholder="Insira nova senha" />
                 </Form.Group>
                 
-                <Button id='btn-cadastro' size='lg' variant="success" type="submit">
-                    Atualizar dados
-                </Button>
+                <div id='btn-cadastro-div'>
+                    <Button id='btn-cadastro' size='lg' variant="success" type="submit">
+                        Atualizar dados
+                    </Button>
+                </div>
             </Form>
         </div>
     </div>

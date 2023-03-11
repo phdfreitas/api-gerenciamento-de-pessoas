@@ -31,8 +31,10 @@ const Login = () => {
 
   return (
     <div id='cadastro'>
-        <h1 className='titulos-centralizados'>Login</h1>
-
+        <h1 className='titulos-centralizados'>Bem-vindo(a)!</h1>
+        <h3 id="subtitulo-login">
+            Faça login para acessar a plataforma
+        </h3>
         <div id='form-cadastro'>
             {error !== "" && 
                 <Alert key="danger" variant="danger" >

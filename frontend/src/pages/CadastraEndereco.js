@@ -68,7 +68,7 @@ const CadastraEndereco = () => {
 
   return (
     <div>
-        <h1 id='titulo-cadastro'>Cadastrar novo endereço</h1>
+        <h1 className='titulos-centralizados'>Cadastrar novo endereço</h1>
 
         <div id='form-cadastro'>
             <Form onSubmit={handleSubmit}>
@@ -168,10 +168,11 @@ const CadastraEndereco = () => {
                         />
                     </div>
                 </Form.Group>
-
-                <Button id='btn-cadastro' size='lg' variant="success" type="submit">
-                    Adicionar endereço
-                </Button>
+                <div id='btn-cadastro-div'>
+                    <Button id='btn-cadastro' size='lg' variant="success" type="submit">
+                        Adicionar endereço
+                    </Button>
+                </div>
             </Form>
         </div>
     </div>

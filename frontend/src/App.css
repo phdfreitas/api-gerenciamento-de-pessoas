@@ -14,7 +14,7 @@
 /*Barra de Navegação*/
 #barraNavegacao1{
   background-color: #d6ffffcf;
-  border-bottom: 2px solid black;
+  border-bottom: 1px solid #0c5092;
   height: 90px;
   width: 100%;
   top: 0;
@@ -157,7 +157,7 @@
   clear: both;
   padding: 20px;
   background-color: #fff;
-  border-top: 1px solid black;
+  border-top: 1px solid #0c5092;
 }
 
 #feedback-home{
@@ -262,7 +262,8 @@
 .titulos-centralizados{
   text-align: center;
   margin-top: 25px;
-  font-size: 2em;
+  font-size: 2.2em;
+  font-family: 'Kanit', sans-serif;
 }
 
 #form-cadastro{
@@ -323,6 +324,34 @@
 #loginErrorMessage{
   color: red;
 }
+
+#subtitulo-login{
+  text-align: center;
+  font-size: 1.2em;
+  margin-top: 10px;
+  color: #000;
+}
+
+#custom-navbar-user{
+  width: 200px;
+  margin-left: 50px;
+  justify-content: center;
+}
+
+.greeting{
+  float: left;
+  margin-top: 2px;
+  margin-left: 12px;
+  line-height: 1.7;
+}
+
+#dropdown{
+  float: right;
+  margin-right: 25px;
+  line-height: 1;
+  padding: 0%;
+}
+
 
 /*Rodapé*/
 footer{
