@@ -27,7 +27,7 @@ const NavbarComponent = () => {
     <div>
       <Navbar id={path === "/" ? style1[0] : style2[0]}>
         <Container>
-          <Navbar.Brand href="/" id={path === "/" ? style1[1] : style2[1]}>Gerenciamento</Navbar.Brand>
+          <Navbar.Brand className='navbar-brand' href="/" id={path === "/" ? style1[1] : style2[1]}>Gerenciamento</Navbar.Brand>
           <Nav className="me-auto" id={path === "/" ? style1[2] : style2[2]}>
             {!user &&
               <>

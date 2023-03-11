@@ -1,3 +1,6 @@
+/*Fontes*/
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
 /*Animacao*/
 @keyframes spin{
   from{
@@ -10,7 +13,7 @@
 
 /*Barra de Navegação*/
 #barraNavegacao1{
-  background-color: #a4c0ff;
+  background-color: #d6ffffcf;
   border-bottom: 2px solid black;
   height: 90px;
   width: 100%;
@@ -18,9 +21,13 @@
   z-index: 1;
 }
 
+.navbar-brand{
+  font-family: 'Kanit', sans-serif;
+}
+
 #barraNavegacao1 #barraNavegacao1-Brand{
   font-size: 2.1em;
-  color: black;
+  color: #021f67;
   font-weight: 600;
 }
 
@@ -32,15 +39,16 @@
 #barraNavegacao1-Itens-Item1, #barraNavegacao1-Itens-Item2,
 #barraNavegacao1-Itens-Item3, #barraNavegacao1-Itens-Item4{
   font-weight: 700;
+  color: #021f67;
 }
 
 #barraNavegacao1-Itens-Item1:hover, #barraNavegacao1-Itens-Item2:hover,
 #barraNavegacao1-Itens-Item3:hover, #barraNavegacao1-Itens-Item4:hover{
-  color: rgb(255, 255, 255);
+  color: #0c5092
 }
 
 #barraNavegacao1 #barraNavegacao1-Brand:hover{
-  color: rgb(255, 255, 255);
+  color: #0c5092
 }
 
 /*Barra Navegação 2*/
@@ -76,9 +84,10 @@
 }
 
 
-/*Estilo Home*/
+/*Primeiro painel Home*/
 #home{
-  background-color: #a4c0ff;
+  background-color: #d6ffffcf;
+  font-family: 'Kanit', sans-serif;
 }
 
 #home-main{
@@ -86,20 +95,23 @@
 }
 
 #primeiraDivPrincipal{
-  width: 900px;
-  margin: -10px;
+  width: 850px;
+  margin-left: 55px;
   float: left;
   height: 500px;
 }
 
 #primeiraDivPrincipal h1, h3{
   text-align: justify;
+  font-family: 'Kanit', sans-serif;
+  color: #021f67;
 }
 
 #primeiraDivPrincipal h1{
   margin-top: 100px;
-  margin-left: 60px;
+  margin-left: 55px;
   font-size: 3.5em;
+  font-weight: 600;
 }
 
 #primeiraDivPrincipal h3{
@@ -116,6 +128,11 @@
   margin-bottom: 35px;
   border-radius: 20px;
   padding: 10px 20px;
+  background-color: #021f67;
+}
+
+#btn-main-redirect:hover {
+  background-color: #022e77;
 }
 
 #link-main-redirect {
@@ -144,15 +161,104 @@
 }
 
 #feedback-home{
-  margin-top: 10px;
+  margin-top: 30px;
+  font-size: 1.3em;
+  color: #021f67;
+  font-weight: 600;
 }
 
+/*Sessão Comentários*/
+#carroussel{
+  height: 380px;
+}
+.carroussel-item{
+  margin-left: 110px;
+}
+
+#comentariosUsuarios{
+  width: 380px;
+  padding: 15px;
+  margin-top: 40px;
+  margin-bottom: 25px;
+  margin-left: 30px;
+  border: 1px solid #e2dfdf;
+  float: left;
+}
+
+.comentario{
+  color: #021f67;
+}
+
+.comentarioNomeUsuario{
+  font-style: italic;
+  font-size: 1.25em;
+  font-weight: 600;
+}
+
+.paragrafoComentario{
+  margin-top: 10px;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1em;
+}
+
+.dataHome{
+  display: block;
+  font-weight: 400;
+  font-size: 1.1em;
+}
+
+/*Recomendacoes*/
+#recomendacao{
+  background-color: #84bfff7d;
+  overflow: hidden;
+  height: 550px;
+}
+
+#recomendacao h1{
+  text-align: center;
+  font-size: 2.5em;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  color: #001875;
+  font-weight: 600;
+}
+
+#recomendacao1, #recomendacao2, #recomendacao3{
+  padding: 15px;
+  margin-bottom: 25px;
+  margin-left: 30px;
+  float: left;
+  width: 450px;
+}
+
+.icon-recomendacao{
+  text-align: center;
+  font-size: 3em;
+  color: #021f67;
+  font-weight: 600;
+}
+
+.titulo-recomendacoes{
+  color: #001875;
+  text-align: center;
+  font-weight: 600;
+}
+
+.paragrafo-recomendacoes{
+  text-align: justify;
+  font-size: 1.1em;
+  color: #001875;
+  width: 90%;
+  margin: 0 auto;
+}
+
+/*Formulários de Cadastro*/
 #cadastro{
   width: 400px;
   margin: 0 auto;
 }
 
-/*Formulários de Cadastro*/
 .titulos-centralizados{
   text-align: center;
   margin-top: 25px;
@@ -195,68 +301,6 @@
   margin-top: 10px;
 }
 
-/*Sessão Comentários*/
-
-#comentariosUsuarios{
-  width: 450px;
-  padding: 15px;
-  margin-top: 40px;
-  margin-bottom: 25px;
-  margin-left: 30px;
-  border: 1px solid #e2dfdf;
-  float: left;
-}
-
-.comentarioNomeUsuario{
-  font-style: italic;
-  font-size: 1.25em;
-}
-
-.paragrafoComentario{
-  margin-top: 10px;
-  font-style: italic;
-  font-weight: 400;
-  font-size: 1.18em;
-}
-
-.dataHome{
-  display: block;
-  font-weight: 400;
-  font-size: 1.1em;
-}
-
-/*Recomendacoes*/
-#recomendacao h1{
-  text-align: center;
-  font-size: 2.5em;
-  margin-top: 40px;
-  color: #001875;
-}
-
-#recomendacao1, #recomendacao2, #recomendacao3{
-  padding: 15px;
-  margin-bottom: 25px;
-  margin-left: 30px;
-  float: left;
-  width: 450px;
-}
-
-.icon-recomendacao{
-  text-align: center;
-  font-size: 3em;
-}
-
-.titulo-recomendacoes{
-  color: #001875;
-  text-align: center;
-}
-
-.paragrafo-recomendacoes{
-  text-align: justify;
-  font-size: 1.1em;
-  color: #001875;
-}
-
 /*Lista Pessoas*/
 #cabecalhoLista{
   font-size: 1em;
@@ -280,10 +324,38 @@
   color: red;
 }
 
+/*Rodapé*/
 footer{
+  height: 125px;
   background-color: #fff;
   padding: 12px;
   text-align: center;
   font-size: 1.1em;
   clear: both;
+}
+
+#footer-direitos, #footer-politica-privacidade{
+  color: #021f67;
+  display: block;
+}
+
+#footer-politica-privacidade a{
+  text-decoration: none;
+  color: #021f67;
+}
+
+#footer-politica-privacidade a:hover{
+  color: #0c5092;
+}
+
+#footer-redes{
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+#footer-redes a{
+  margin-left: 5px;
+  margin-right: 5px;
+  text-decoration: none;
+  color: #021f67;
 }
