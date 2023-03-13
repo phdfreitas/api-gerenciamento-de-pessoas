@@ -5,6 +5,8 @@ import { useState } from "react"
 import { useParams } from 'react-router-dom';
 import authHeader from '../service/AuthenticationHeader';
 
+import Message from '../components/Message';
+
 const CadastraEndereco = () => {
 
     const {id} = useParams()
@@ -20,6 +22,8 @@ const CadastraEndereco = () => {
     const [numero, setNumero] = useState("")
     const [tipoEndereco, setTipoEndereco] = useState("")
     
+    const [showMessage, setShowMessage] = useState(false)
+
     const handleCep = (e) => {
         
         const urlCep = `https://viacep.com.br/ws/${cep}/json/`
@@ -63,13 +67,18 @@ const CadastraEndereco = () => {
             body: JSON.stringify(endereco)
         })
 
-        window.location.href = `http://localhost:3000/consultar/${id}`
+        setShowMessage(true)
+        
+        setInterval(() => {
+            window.location.href = `http://localhost:3000/meusEnderecos`
+        }, 1800);
+
     }
 
   return (
     <div>
         <h1 className='titulos-centralizados'>Cadastrar novo endereço</h1>
-
+        {showMessage && <Message action="Dados atualizados com sucesso!" showMessage={true} bg={'info'}/>}
         <div id='form-cadastro'>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicCep">

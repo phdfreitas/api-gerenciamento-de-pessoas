@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom"
 import { useEffect } from "react"
 import authHeader from '../service/AuthenticationHeader';
 import AuthenticationService from '../service/AuthenticationService';
+import Message from '../components/Message';
 
 const AtualizarDados = () => {
 
@@ -21,6 +22,8 @@ const AtualizarDados = () => {
     const [dataDeNascimento, setDataDeNascimento] = useState("")
     const [senha, setSenha] = useState("")
     
+    const [showMessage, setShowMessage] = useState(false)
+
     useEffect(() => {
         async function fetchData(){
 
@@ -66,20 +69,22 @@ const AtualizarDados = () => {
         })
         
         const currentUser = AuthenticationService.getLoggedInUserName()
+        setShowMessage(true)
         
-        if(currentUser.role === "ROLE_ADMIN"){
-            window.location.href = "http://localhost:3000/listaPessoas"
-        }
-        else{
-            window.location.href = "http://localhost:3000/meusEnderecos"
-        }
-
+        setInterval(() => {
+            if(currentUser.role === "ROLE_ADMIN"){
+                window.location.href = "http://localhost:3000/listaPessoas"
+            }
+            else{
+                window.location.href = "http://localhost:3000/meusEnderecos"
+            }
+        }, 1800);
     }
 
   return (
     <div>
         <h1 className='titulos-centralizados'>Atualizar dados</h1>
-
+        {showMessage && <Message action="Dados atualizados com sucesso!" showMessage={true} bg={'info'}/>}
         <div id="form-cadastro">
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicNome">

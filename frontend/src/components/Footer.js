@@ -19,10 +19,10 @@ const Footer = () => {
               <a href="/">Política de Privacidade</a>
             </span>
             <div id="footer-redes">
-              <a href="/" target="_blank" rel="noreferrer">
+              <a href="https://www.linkedin.com/in/phdfreitas/" target="_blank" rel="noreferrer">
                 <BsLinkedin size={30} />
               </a>
-              <a href="/" target="_blank" rel="noreferrer">
+              <a href="https://github.com/phdfreitas" target="_blank" rel="noreferrer">
                 <BsGithub size={30} />
               </a>
             </div>
