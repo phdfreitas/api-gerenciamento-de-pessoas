@@ -41,6 +41,7 @@ const NavbarComponent = () => {
             }
             {user && currentUser.role === 'ROLE_ADMIN' &&
             <>
+              <Nav.Link id={path === "/" ? style1[5] : style2[5]} href={`/adicionarNovoEndereco/${pessoa.id}`}>Novo endereço</Nav.Link>
               <Nav.Link id={path === "/" ? style1[5] : style2[5]} href="/listaPessoas">Lista de Pessoas</Nav.Link>
               <Nav.Link id={path === "/" ? style1[6] : style2[6]} href="/" onClick={AuthenticationService.logout}>Sair</Nav.Link>
             </>

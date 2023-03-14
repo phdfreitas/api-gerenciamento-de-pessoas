@@ -37,7 +37,7 @@ const Login = () => {
         </h3>
         <div id='form-cadastro'>
             {error !== "" && 
-                <Alert key="danger" variant="danger" >
+                <Alert key="danger" variant="danger" className='alert-position'>
                     <VscError/> 
                     {error}
                 </Alert>

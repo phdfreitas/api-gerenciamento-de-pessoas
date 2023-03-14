@@ -2,12 +2,15 @@ import { Link } from "react-router-dom"
 import { useFetch } from "../hooks/useFecth"
 
 import Table from 'react-bootstrap/Table';
+import AuthenticationService from "../service/AuthenticationService";
 
 const url = 'http://localhost:8080/pessoas/listarTodas'
 
 const ListaPessoas = () => {
 
     const {data: pessoas} = useFetch(url)
+
+    const currentUser = AuthenticationService.getLoggedInUserName().sub
 
   return (
     <div id="listaPessoas">
@@ -27,7 +30,7 @@ const ListaPessoas = () => {
             </thead>
             <tbody id="corpoLista">
                 {pessoas.map((pessoa) => (
-                    <tr key={pessoa.id}>
+                    <tr key={pessoa.id} id={pessoa.email === currentUser ? 'customStyle' : ''}>
                         <td>{pessoa.id}</td>
                         <td>{pessoa.nome}</td>
                         <td>{pessoa.sobrenome}</td>

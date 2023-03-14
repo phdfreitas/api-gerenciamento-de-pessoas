@@ -64,7 +64,7 @@
 }
 
 #barraNavegacao2 #barraNavegacao2-Itens{
-  margin-left: 750px;
+  margin-left: 700px;
   font-size: 1.1em;
 }
 
@@ -344,6 +344,14 @@ tbody{
   width: 200px;
   margin-left: 50px;
   justify-content: center;
+}
+
+.alert-position{
+  text-align: center;
+}
+
+#customStyle{
+  background-color: #d6ffffcf;
 }
 
 .greeting{
