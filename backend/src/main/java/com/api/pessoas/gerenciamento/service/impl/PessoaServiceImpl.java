@@ -45,6 +45,7 @@ public class PessoaServiceImpl implements PessoaService {
         Pessoa pessoaAtualizada = consultaPessoa(id);
         
         pessoaAtualizada.setNome(pessoa.getNome());
+        pessoaAtualizada.setSobrenome(pessoa.getSobrenome());
         pessoaAtualizada.setDataDeNascimento(pessoa.getDataDeNascimento());
 
         return pessoaRepository.save(pessoaAtualizada);
