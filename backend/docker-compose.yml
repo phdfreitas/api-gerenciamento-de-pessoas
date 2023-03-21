@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  springboot:
+    build: .
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysqldb
+    networks:
+      springboot-mysql-net: 
+  
+  mysqldb:
+    image: "mysql:5.7"
+    restart: always
+    environment:
+      MYSQL_DATABASE: api_pessoas_db
+      MYSQL_USER: pedro
+      MYSQL_PASSWORD: pedro123
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3308:3306"
+    networks:
+      springboot-mysql-net:
+
+networks:
+  springboot-mysql-net:
