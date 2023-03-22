@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   springboot:
-    build: .
+    build: ./backend
     restart: always
     ports:
       - "8080:8080"
@@ -21,6 +21,16 @@ services:
       MYSQL_ROOT_PASSWORD: root
     ports:
       - "3308:3306"
+    networks:
+      springboot-mysql-net:
+
+  frontend:
+    build: ./frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - springboot
     networks:
       springboot-mysql-net:
 
