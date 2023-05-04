@@ -17,8 +17,6 @@ const NavbarComponent = () => {
   const url =  user ? `http://localhost:8080/pessoas/consultarPorEmail/${currentUser.sub}` : null
   let {data: pessoa} = useFetch(url)
 
-  console.log(currentUser)
-
   const style1 = ["barraNavegacao1", "barraNavegacao1-Brand", "barraNavegacao1-Itens", 
                 "barraNavegacao1-Itens-Item1", "barraNavegacao1-Itens-Item2", 
                 "barraNavegacao1-Itens-Item3", "barraNavegacao1-Itens-Item4"]
