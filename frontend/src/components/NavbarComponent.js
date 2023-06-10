@@ -6,10 +6,15 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import AuthenticationService from '../service/AuthenticationService';
+import ReportService from '../service/ReportService';
 import { useFetch } from '../hooks/useFecth';
+
+import { useNavigate } from 'react-router-dom';
 
 const NavbarComponent = () => {
   
+  const navigate = useNavigate()
+
   const path = window.location.pathname
   const user = AuthenticationService.isUserLoggedIn()
   const currentUser = AuthenticationService.getLoggedInUserName()
@@ -24,6 +29,15 @@ const NavbarComponent = () => {
   const style2 = ["barraNavegacao2", "barraNavegacao2-Brand", "barraNavegacao2-Itens", 
                   "barraNavegacao2-Itens-Item1", "barraNavegacao2-Itens-Item2",
                   "barraNavegacao2-Itens-Item3", "barraNavegacao2-Itens-Item4"]
+
+  const testeFun = async () => {
+    const pdf = await ReportService.generateReportService()
+    //window.open(pdf, '_blank')
+
+    let pdfBlankWindow = window.open('', '_blank')
+    pdfBlankWindow.document.write('<html><head><title>Relatório</title></head><body style="margin:0px;padding:0px;">')
+    pdfBlankWindow.document.write('<embed width="100%" height="100%" name="plugin" src="' + pdf + '" type="application/pdf">')
+  }
 
   return (
     <div>
@@ -40,6 +54,7 @@ const NavbarComponent = () => {
             {user && currentUser.role === 'ROLE_ADMIN' &&
             <>
               <Nav.Link id={path === "/" ? style1[5] : style2[5]} href={`/adicionarNovoEndereco/${pessoa.id}`}>Novo endereço</Nav.Link>
+              <Nav.Link onClick={testeFun} id={path === "/" ? style1[6] : style2[6]}>Gerar Relatório</Nav.Link>
               <Nav.Link id={path === "/" ? style1[5] : style2[5]} href="/listaPessoas">Lista de Pessoas</Nav.Link>
               <Nav.Link id={path === "/" ? style1[6] : style2[6]} href="/" onClick={AuthenticationService.logout}>Sair</Nav.Link>
             </>
