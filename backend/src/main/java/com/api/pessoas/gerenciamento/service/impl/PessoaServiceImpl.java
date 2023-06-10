@@ -6,12 +6,27 @@ import com.api.pessoas.gerenciamento.model.enums.TipoEndereco;
 import com.api.pessoas.gerenciamento.repository.EnderecoRepository;
 import com.api.pessoas.gerenciamento.repository.PessoaRepository;
 import com.api.pessoas.gerenciamento.service.PessoaService;
+
+import io.github.classgraph.Resource;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
 
+import java.io.File;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
+
+import javax.servlet.http.HttpServletResponse;
 
 @Service
 public class PessoaServiceImpl implements PessoaService {
@@ -71,12 +86,55 @@ public class PessoaServiceImpl implements PessoaService {
         return pessoaRepository.save(pessoa);
     }
 
+    @Override
+    public List<Endereco> listaEnderecos(Long idPessoa) {
+        return consultaPessoa(idPessoa).getEnderecos();
+    }
+
+    @Override
+    public byte[] gerarRelatorioPessoas() throws Exception {
+        List<Pessoa> pessoas = listaDePessoas();
+
+        //Get file and compile it
+        File file = ResourceUtils.getFile("classpath:gerenciamento.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(pessoas);
+
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("createdBy", "Gerenciamento de Pessoas");
+
+        //Fill Jasper report
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, dataSource);
+        //Export report
+        return JasperExportManager.exportReportToPdf(jasperPrint);
+    }
+
     private BCryptPasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
     @Override
-    public List<Endereco> listaEnderecos(Long idPessoa) {
-        return consultaPessoa(idPessoa).getEnderecos();
+    public byte[] gerarRelatorioEnderecoPessoa(Long idPessoa) throws Exception {
+        File file = ResourceUtils.getFile("classpath:report.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+
+        Pessoa pessoa = consultaPessoa(idPessoa);
+        Endereco endereco = pessoa.getEnderecos().stream().filter(end -> end.getTipoEndereco() == TipoEndereco.PRINCIPAL).findFirst().get();
+
+
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("CEP", endereco.getCep());
+        parameters.put("LOGRADOURO", endereco.getLogradouro());
+        parameters.put("COMPLEMENTO", endereco.getComplemento());
+        parameters.put("BAIRRO", endereco.getBairro());
+        parameters.put("UF", endereco.getUf());
+        parameters.put("CIDADE", endereco.getCidade());
+        parameters.put("NUMERO", endereco.getNumero());
+        parameters.put("USER_EMAIL", pessoa.getEmail());
+
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JRBeanCollectionDataSource(pessoa.getEnderecos()));
+        return JasperExportManager.exportReportToPdf(jasperPrint);
     }
+
+    
 }

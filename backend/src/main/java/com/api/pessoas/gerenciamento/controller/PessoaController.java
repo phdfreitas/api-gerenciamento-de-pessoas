@@ -3,6 +3,9 @@ package com.api.pessoas.gerenciamento.controller;
 import java.security.Principal;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -71,5 +74,25 @@ public class PessoaController {
     @GetMapping("enderecos/{id}")
     public List<Endereco> enderecosPessoa(@PathVariable Long id){
         return pessoaService.listaEnderecos(id);
+    }
+
+    @GetMapping("/relatorio")
+    public String gerarRelatorioPessoas() throws Exception{
+        
+        byte[] pdfFile = pessoaService.gerarRelatorioPessoas();
+    
+        String base64Pdf = "data:application/pdf;base64," + Base64.encodeBase64String(pdfFile);
+
+        return base64Pdf;
+    }
+
+    @GetMapping("/relatorioEndereco/{id}")
+    public String gerarRelatorioEnderecoPessoa(@PathVariable Long id) throws Exception{
+        
+        byte[] pdfFile = pessoaService.gerarRelatorioEnderecoPessoa(id);
+    
+        String base64Pdf = "data:application/pdf;base64," + Base64.encodeBase64String(pdfFile);
+
+        return base64Pdf;
     }
 }
