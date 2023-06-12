@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.api.pessoas.gerenciamento.model.Endereco;
 import com.api.pessoas.gerenciamento.model.Pessoa;
+import com.api.pessoas.gerenciamento.service.EnderecoService;
+import com.api.pessoas.gerenciamento.service.PessoaService;
 import com.api.pessoas.gerenciamento.service.impl.PessoaServiceImpl;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -30,7 +32,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 public class PessoaController {
 
     @Autowired
-    private PessoaServiceImpl pessoaService;
+    private PessoaService pessoaService;
+
+    @Autowired
+    private EnderecoService enderecoService;
 
     @Operation(summary = "Cadastrar nova pessoa")
     @PostMapping("/cadastrarNova")
@@ -68,12 +73,12 @@ public class PessoaController {
 
     @PostMapping("adicionarNovoEndereco/{id}")
     public Pessoa adicionaNovoEndereco(@PathVariable Long id, @RequestBody Endereco endereco){
-        return pessoaService.adicionaNovoEndereco(endereco, id);
+        return enderecoService.adicionaNovoEndereco(endereco, id);
     }
 
     @GetMapping("enderecos/{id}")
     public List<Endereco> enderecosPessoa(@PathVariable Long id){
-        return pessoaService.listaEnderecos(id);
+        return enderecoService.listaEnderecos(id);
     }
 
     @GetMapping("/relatorio")

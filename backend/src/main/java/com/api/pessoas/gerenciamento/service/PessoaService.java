@@ -13,9 +13,7 @@ public interface PessoaService {
     Pessoa consultaPessoa(Long id);
     Optional<Pessoa> findByEmail(String email);
     Pessoa atualizaDadosPessoa(Long id, Pessoa pessoa);
-    Pessoa adicionaNovoEndereco(Endereco endereco, Long idPessoa);
-    List<Endereco> listaEnderecos(Long idPessoa);
-
+    
     byte[] gerarRelatorioPessoas() throws Exception;
     byte[] gerarRelatorioEnderecoPessoa(Long idPessoa) throws Exception;
 }

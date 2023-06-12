@@ -41,6 +41,8 @@ public class PessoaServiceImpl implements PessoaService {
     public Pessoa salvaPessoa(Pessoa pessoa){
 
         pessoa.setSenha(passwordEncoder().encode(pessoa.getSenha()));
+
+        //o usuário cadastrado é um usuário comum
         pessoa.getRoles().add("USER");
         return pessoaRepository.save(pessoa);
     }
@@ -69,26 +71,6 @@ public class PessoaServiceImpl implements PessoaService {
     @Override
     public Optional<Pessoa> findByEmail(String email) {
         return pessoaRepository.findByEmail(email);
-    }
-
-    @Override
-    public Pessoa adicionaNovoEndereco(Endereco endereco, Long idPessoa){
-        Pessoa pessoa = consultaPessoa(idPessoa);
-
-        if(endereco.getTipoEndereco() == null)
-            endereco.setTipoEndereco(TipoEndereco.SECUNDARIO);
-
-        pessoa.getEnderecos().add(endereco);
-        endereco.setPessoa(pessoa);
-
-        enderecoRepository.save(endereco);
-
-        return pessoaRepository.save(pessoa);
-    }
-
-    @Override
-    public List<Endereco> listaEnderecos(Long idPessoa) {
-        return consultaPessoa(idPessoa).getEnderecos();
     }
 
     @Override
